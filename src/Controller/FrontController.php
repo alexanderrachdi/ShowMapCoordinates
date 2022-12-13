@@ -55,7 +55,7 @@ class FrontController extends \Symfony\Bundle\FrameworkBundle\Controller\Abstrac
             return new JsonResponse(['error' => 'data not found'], 404);
         }
 
-        return new JsonResponse($coordinates);
+        return new JsonResponse($coordinates, 200, ["Content-Type" => "application/json"]);
     }
 
 }

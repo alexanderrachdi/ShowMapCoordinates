@@ -22,7 +22,9 @@ And return request to the React app. We show the coordinates on the page in Reac
 I use mockHttpClient who return actual responses witch I generate before that to optimize the speed for requests.
 They can be run it with: "symfony php bin/phpunit tests"
 
-4. After that I create all task only on React js with requests to OpenStreetMap provider directly with autocomplete and etc.
+4. Create basic Exceptions hanler in /EventListener/ExceptionListener.php
+
+5. After that I create all task only on React js with requests to OpenStreetMap provider directly with autocomplete and etc.
 
 The task took me about 8-10h, lot of them on react app because I haven't work with Ract, Vue and Angular and that was new for me.
 Have some js css issues with OpenStreetMap component for React, the card shows partially, but finally I handle it.
