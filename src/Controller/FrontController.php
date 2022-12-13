@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use Amp\Http\Client\Response;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -22,14 +22,14 @@ class FrontController extends \Symfony\Bundle\FrameworkBundle\Controller\Abstrac
     /**
      * @Route("/", "app_map_page")
      */
-    public function index(Request $request) {
+    public function index(Request $request): Response {
         return $this->render('index.html.twig');
     }
 
     /**
      * @Route("/app_geolocation", "app_geolocation")
      */
-    public function symfonyGeolocation(Request $request) {
+    public function symfonyGeolocation(Request $request): Response {
         $coordinates = [];
         if($request->isMethod('post')) {
             $address = urlencode(trim($request->request->get('address')));
@@ -48,7 +48,7 @@ class FrontController extends \Symfony\Bundle\FrameworkBundle\Controller\Abstrac
     }
 
 
-    public function getAddress(Request $request) {
+    public function getAddress(Request $request): JsonResponse {
         $address = urlencode(trim($request->get('address')));
         $coordinates = $this->mapControl->fetchCoords($address);
         if(empty($coordinates) || !empty($coordinates['error'])){
