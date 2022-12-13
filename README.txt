@@ -1,5 +1,5 @@
 To start the project you need to run the Simfony server with the command:
-symfony server:start
+"symfony server:start" (if you use Symfony local server)
 Then open the application at:
 http://localhost:8000/
 
@@ -12,7 +12,8 @@ They implements same interface MapAddressInterface witch make switch them or mix
 this way. In client classes get the requested address and fetch coordinates from API services.Make response for the front-end witch in
 this case is symfony twig template with show it on the client's map. We have submit form in view to create requests.
 
-Open http://localhost:8000/app_geolocation
+                FOR Symfony-React project
+Open http://localhost:8000/
 2. The second implementation is using Symfony back end as API from React front end. I installed React JS into symfony project.
 Create API route in /config/routes.yaml witch leads to FrontController and after to service client controller to fetch coordinates.
 And return request to the React app. We show the coordinates on the page in React app. I'm using leaflet map.
@@ -29,6 +30,7 @@ Have some js css issues with OpenStreetMap component for React, the card shows p
 For the work environment things are much complicated of course but for testing task I think it's enough.
 
 PS:
+Maybe for this" symfony" command you should install symfony cli.
 For google client the api key work only for geocoding so I made only that part fetching coordinates. When I try to
 render the map with given key - shows me that I have to enable some api's from account that I dont have, so proceed with
 OpenStreetMap, but the logic is exact the same.
