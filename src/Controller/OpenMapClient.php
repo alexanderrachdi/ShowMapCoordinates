@@ -32,9 +32,9 @@ class OpenMapClient implements MapAddressInterface
             return ['error' => "The address not existed in our database. Be more accurate."];
         }
 
-        $result = json_decode($responce->getContent())[0];
+        $result = json_decode($responce->getContent(), true)[0];
 
-        return (array)$result;
+        return $result;
 
     }
 }
