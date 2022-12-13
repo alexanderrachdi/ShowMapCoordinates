@@ -23,7 +23,7 @@ class FakeOpenMapController implements MapAddressInterface
     {
 
         $coordinates = [
-            'lat'               =>  $result->lat,
+            'lat'               => $result->lat,
             'lng'               => $result->lon,
             'formatted_address' => $result->display_name,
         ];

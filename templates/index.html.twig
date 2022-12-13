@@ -1,42 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
 <head>
-
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-{#    <script type="text/javascript" src="https://maps.google.com/maps/api/js?key=AIzaSyCbgzprhvxyw5kHKR2mksfHOUxSR4_rQF4&libraries=places"></script>#}
-{#    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>#}
-    <title>Live Demo of Google Maps Geocoding Example with PHP</title>
-
-    <style>
-        /* some custom css */
-        #gmap_canvas{
-            width:100%;
-            height:30em;
-        }
-    </style>
-
+    {% block stylesheets %}
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+              integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+              crossorigin=""/>
+        {{ encore_entry_link_tags('styles') }}
+    {% endblock %}
+    {% block javascripts %}
+        <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+                integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+                crossorigin=""></script>
+        {{ encore_entry_script_tags('app') }}
+    {% endblock %}
 </head>
 <body>
-{% for flash_message in app.session.flashBag.get('error') %}
-    <div class="alert alert-warning" role="alert">
-        {{ flash_message }}
-    </div>
-{% endfor %}
-    <form action="/" method="post">
-        <input type='text' name='address' placeholder='Enter any address here' id="location" />
-        <input type='submit' value='Search!' />
-    </form>
+    <div id="app"></div>
 </body>
-<script>
-    $(document).ready(function () {
-        var autocomplete;
-        var id = 'location';
-
-        autocomplete = new google.maps.places.Autocomplete((document.getElementById(id)), {
-            types:['geocode']
-        })
-    });
-</script>
 </html>

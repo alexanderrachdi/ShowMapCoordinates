@@ -2,9 +2,6 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>map</title>
     <style>
         #map{
@@ -19,8 +16,8 @@
         {{ flash_message }}
     </div>
 {% endfor %}
-{{ coordinates['lat'] }}, {{ coordinates['lng'] }}, {{ coordinates['formatted_address'] }}
-<form action="/" method="post">
+{{ coordinates['lat'] }}, {{ coordinates['lon'] }}, {{ coordinates['display_name'] }}
+<form action="/app_geolocation" method="post">
     <input type='text' name='address' placeholder='Enter any address here' />
     <input type='submit' value='Search!' />
 </form>
@@ -29,9 +26,8 @@
 
 <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js" integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
 <script>
-
     let mapOptions = {
-        center: [{{ coordinates['lat'] }}, {{ coordinates['lng'] }}],
+        center: [{{ coordinates['lat'] }}, {{ coordinates['lon'] }}],
         zoom: 10
     }
 
@@ -40,7 +36,7 @@
     let layer = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png');
     map.addLayer(layer);
 
-    let marker = new L.Marker([{{ coordinates['lat'] }}, {{ coordinates['lng'] }}]);
+    let marker = new L.Marker([{{ coordinates['lat'] }}, {{ coordinates['lon'] }}]);
     marker.addTo(map);
 
 </script>

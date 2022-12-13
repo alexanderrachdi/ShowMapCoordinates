@@ -21,10 +21,11 @@ class OpenMapClient implements MapAddressInterface
 
     public function fetchCoords(string $address) : array
     {
+        $url = "https://nominatim.openstreetmap.org/search?q={$address}&format=json&addressdetails=1&polygon_geojson=0";
+        $responce = $this->httpClient->request('GET', $url);
 
-        $responce = $this->httpClient->request('GET', "https://nominatim.openstreetmap.org/?addressdetails=1&q={$address}&format=json&limit=1");
         if ($responce->getStatusCode() !== 200) {
-            return ['error' => "Request error.Trye again later!"];
+            return ['error' => "Request error."];
         }
 
         if(empty(json_decode($responce->getContent()))) {
@@ -33,13 +34,7 @@ class OpenMapClient implements MapAddressInterface
 
         $result = json_decode($responce->getContent())[0];
 
-        $coordinates = [
-            'lat'               => $result->lat,
-            'lng'               => $result->lon,
-            'formatted_address' => $result->display_name,
-        ];
-
-        return $coordinates;
+        return (array)$result;
 
     }
 }

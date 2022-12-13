@@ -32,13 +32,8 @@ class GoogleMapClient implements MapAddressInterface
         }
 
         $result = json_decode($responce->getContent());
-        $coordinates = [
-            'lat'               => $result->results[0]->geometry->location->lat,
-            'lng'               => $result->results[0]->geometry->location->lng,
-            'formatted_address' => $result->results[0]->formatted_address,
-        ];
 
-        return $coordinates;
+        return $result;
 
     }
 }

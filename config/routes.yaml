@@ -1,3 +1,4 @@
-#index:
-#    path: /
-#    controller: App\Controller\DefaultController::index
+address_coordinates:
+  path: /api/v1/geolocation/{address}
+  controller: App\Controller\FrontController:getAddress
+  methods: [GET]
