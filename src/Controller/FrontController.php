@@ -49,6 +49,7 @@ class FrontController extends \Symfony\Bundle\FrameworkBundle\Controller\Abstrac
 
 
     public function getAddress(Request $request): JsonResponse {
+
         $address = urlencode(trim($request->get('address')));
         $coordinates = $this->mapControl->fetchCoords($address);
         if(empty($coordinates) || !empty($coordinates['error'])){
